@@ -4,8 +4,14 @@
   "description": "Bryant Cabrera's Education Program App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "next"
+    "start": "next",
+    "test": "npm run build && echo \"Placeholder For Running Test Suite\" && exit 0",
+    "lint": "eslint \"{,!(node_modules|dist)/**/}*.{j,t}s\"",
+    "lint:fix": "npm run lint -- --fix",
+    "build": "tsc -p .",
+    "postinstall": "tsc -p .",
+    "compile": "tsc && node server.js",
+    "dev:server": "nodemon -e ts --exec \"npm run compile\""
   },
   "repository": {
     "type": "git",
@@ -17,6 +23,17 @@
     "url": "https://github.com/BryantCabrera/education-program-app/issues"
   },
   "homepage": "https://github.com/BryantCabrera/education-program-app#readme",
+  "lint-staged": {
+    "*.{j,t}s": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:fix && npm test"
+    }
+  },
   "dependencies": {
     "next": "^9.1.3",
     "react": "^16.12.0",
