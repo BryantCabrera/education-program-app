@@ -13,7 +13,7 @@ export default class App extends Component<IIndexComponentProps, IIndexComponent
 		return { programs: parsedResponse.data };
 	}
 
-	render() {
+	render = () => {
 		const displayHeaders = ['School', 'Program Name', 'Location', 'Degree Type', 'Delivery', 'Annual Tuition'];
 
 		const tableHeaders = ['school', 'programName', 'location', 'degreeType', 'delivery', 'annualTuition'];
@@ -46,5 +46,5 @@ export default class App extends Component<IIndexComponentProps, IIndexComponent
 			// 	arrayOption={[["size", 'all', ' ']]}
 			// />
 		);
-	}
+	};
 }

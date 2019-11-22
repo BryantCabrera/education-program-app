@@ -89,7 +89,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 		});
 	};
 
-	render() {
+	render = () => {
 		let pageData = this.state.data;
 		const pagers = this.state.pagers;
 		const pagesCount = Math.ceil(this.state.data.length / pagers.rowsPerPage);
@@ -152,7 +152,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 				)}
 			</div>
 		);
-	}
+	};
 }
 
 // Table.defaultProps = {

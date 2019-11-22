@@ -62,7 +62,7 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 		});
 	};
 
-	render() {
+	render = () => {
 		const nextDisableStyle = this.state.currPage + 1 >= this.props.totalPage;
 		const prevDisableStyle = this.state.currPage + 1 <= 1;
 		const rowPerPage = this.props.totalPage === 1 ? 'All' : this.props.rowPerPage;
@@ -121,5 +121,5 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 				</div>
 			</div>
 		);
-	}
+	};
 }

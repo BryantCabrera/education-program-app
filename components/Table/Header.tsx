@@ -6,7 +6,7 @@ export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 		sortCssClass: 'fa fa-sort',
 	};
 
-	getDerivedStateFromProps(nextProps) {
+	getDerivedStateFromProps = (nextProps: ITableHeaderProps) => {
 		let a = 'fa fa-sort';
 		switch (nextProps.asc) {
 			case null:
@@ -23,13 +23,13 @@ export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 		if (nextProps.asc !== this.props.asc) {
 			this.setState({ sortCssClass: a });
 		}
-	}
+	};
 
-	sort() {
+	sort = () => {
 		this.props.sortData(this.props.dataKey, !this.props.asc);
-	}
+	};
 
-	render() {
+	render = () => {
 		return (
 			<th onClick={this.sort}>
 				{' '}
@@ -37,5 +37,5 @@ export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 				<i className={this.state.sortCssClass} aria-hidden='true' />
 			</th>
 		);
-	}
+	};
 }
