@@ -18,14 +18,14 @@ export default class Table extends Component<ITableProps, ITableState> {
 		},
 	};
 
-	UNSAFE_componentWillReceiveProps(nextProps) {
+	getDerivedStateFromProps = (nextProps: ITableProps) => {
 		//constructor is only invoked when the component is first created. if data change, need to update on componentWillReceiveProps
 		if (nextProps.tblData !== this.state.data) {
 			this.setState({ data: nextProps.tblData });
 		}
-	}
+	};
 
-	componentDidUpdate(prevProps, prevState) {}
+	componentDidUpdate = (prevProps, prevState) => {};
 	filter(e) {
 		const newData = this.props.tblData.filter(item => {
 			for (const key in item) {
@@ -42,7 +42,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 		});
 	}
 
-	sortData(dKey, nAsc) {
+	sortData = (dKey, nAsc) => {
 		const newAsc = this.state.asc;
 		const newData = this.state.data;
 		newData.sort((a, b) => {
@@ -64,16 +64,16 @@ export default class Table extends Component<ITableProps, ITableState> {
 			asc: Object.assign({}, newAsc, { [dKey]: nAsc }),
 			data: newData,
 		});
-	}
+	};
 
-	setCurrentPage(i) {
+	setCurrentPage = (i: string) => {
 		const index = parseInt(i);
 		this.setState({
 			pagers: Object.assign({}, this.state.pagers, { curr: index }),
 		});
-	}
+	};
 
-	setRowsPerPage(i) {
+	setRowsPerPage = (i: string) => {
 		const index = parseInt(i);
 		let nCurr = this.state.pagers.curr;
 		const pagesCount = Math.ceil(this.state.data.length / index);
@@ -87,7 +87,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 				curr: nCurr,
 			}),
 		});
-	}
+	};
 
 	render() {
 		let pageData = this.state.data;

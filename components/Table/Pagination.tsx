@@ -3,11 +3,11 @@ import { ITablePaginationProps, ITablePaginationState } from '../../common/inter
 
 export class Pagination extends Component<ITablePaginationProps, ITablePaginationState> {
 	state = {
-		currPage: this.props.curr,
-		rowPerPage: this.props.rowPerPage,
+		currPage: 1,
+		rowPerPage: 5,
 	};
 
-	getDerivedStateFromProps(nextProps) {
+	getDerivedStateFromProps = (nextProps: ITablePaginationProps) => {
 		//constructor is only invoked when the component is first created. if data change, need to update on componentWillReceiveProps
 		if (nextProps.curr !== this.state.currPage) {
 			this.setState({ currPage: nextProps.curr });
@@ -15,36 +15,43 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 		if (nextProps.rowPerPage !== this.state.rowPerPage) {
 			this.setState({ rowPerPage: nextProps.rowPerPage });
 		}
-	}
+	};
 
-	setCurrentPage(e) {
+	componentDidMount = () => {
+		this.setState({
+			currPage: this.props.curr,
+			rowPerPage: this.props.rowPerPage,
+		});
+	};
+
+	setCurrentPage = e => {
 		this.setPage(parseInt(e.target.value));
-	}
+	};
 
-	addPage() {
+	addPage = () => {
 		if (this.state.currPage >= this.props.totalPage - 1) {
 			return;
 		}
 
 		this.setPage(this.state.currPage + 1);
-	}
+	};
 
-	subPage() {
+	subPage = () => {
 		if (this.state.currPage < 1) {
 			return;
 		}
 
 		this.setPage(this.state.currPage - 1);
-	}
+	};
 
-	setPage(i) {
+	setPage = (i: number) => {
 		this.props.setCurrentPage(i);
 		this.setState({
 			currPage: i,
 		});
-	}
+	};
 
-	setRowsPerPage(e) {
+	setRowsPerPage = (e: any) => {
 		let i = parseInt(e.target.value);
 		if (isNaN(i)) {
 			i = this.props.totalsCount;
@@ -53,7 +60,7 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 		this.setState({
 			rowPerPage: i,
 		});
-	}
+	};
 
 	render() {
 		const nextDisableStyle = this.state.currPage + 1 >= this.props.totalPage;
