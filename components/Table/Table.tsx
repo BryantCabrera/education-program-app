@@ -25,8 +25,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 		}
 	};
 
-	componentDidUpdate = (prevProps, prevState) => {};
-	filter(e) {
+	filter = (e: any) => {
 		const newData = this.props.tblData.filter(item => {
 			for (const key in item) {
 				const v = item[key] && item[key].toString().toLowerCase();
@@ -40,7 +39,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 			filter: e.target.value,
 			data: newData,
 		});
-	}
+	};
 
 	sortData = (dKey, nAsc) => {
 		const newAsc = this.state.asc;
