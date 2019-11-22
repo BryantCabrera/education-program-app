@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { ITableHeaderProps, ITableHeaderState} from '../../common/interfaces';
+import { ITableHeaderProps, ITableHeaderState } from '../../common/interfaces';
 
 export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 	state = {
-		sortCssClass: 'fa fa-sort'
+		sortCssClass: 'fa fa-sort',
 	};
 
 	componentWillReceiveProps(nextProps) {
@@ -33,7 +33,7 @@ export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 			<th onClick={this.sort}>
 				{' '}
 				{this.props.children} <br />
-				<i className={this.state.sortCssClass} aria-hidden="true" />
+				<i className={this.state.sortCssClass} aria-hidden='true' />
 			</th>
 		);
 	}
