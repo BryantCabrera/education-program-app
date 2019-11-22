@@ -45,3 +45,25 @@ export interface ITablePaginationState {
   currPage: number;
   rowPerPage: number;
 }
+
+export interface ITableProps {
+  tblData: any;
+  tHead: any;
+  dKey: any;
+  customTd: any;
+  paging: boolean;
+  search: boolean;
+  defaultCSS: boolean;
+  defaultRowsPerPage: number;
+}
+
+export interface ITableState {
+  data: any;
+  asc: any;
+  filter: string;
+  pagers: {
+    paging: any;
+    curr: number;
+    rowsPerPage: number | string;
+  };
+}
