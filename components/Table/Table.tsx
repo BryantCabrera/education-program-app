@@ -4,7 +4,7 @@ import { Header } from './Header';
 import { Cell } from './Cell';
 import { ITableProps, ITableState } from '../../common/interfaces';
 
-export class Table extends Component<ITableProps, ITableState> {
+export default class Table extends Component<ITableProps, ITableState> {
 	state = {
 		data: this.props.tblData || [],
 		asc: (this.props.dKey || []).reduce((acc, cur) => {
@@ -89,6 +89,7 @@ export class Table extends Component<ITableProps, ITableState> {
 		return (
 			<div className='table-responsive'>
 				<div className='sortable-table'>
+					<div className='table-title'>Affordable Online Degrees</div>
 					{this.props.search && (
 						<div className='search-box'>
 							Search:{' '}
@@ -102,18 +103,9 @@ export class Table extends Component<ITableProps, ITableState> {
 							/>
 						</div>
 					)}
-					{pagers.paging ? (
-						<Pagination
-							curr={pagers.curr}
-							totalPage={pagesCount}
-							setCurrentPage={this.setCurrentPage}
-							setRowsPerPage={this.setRowsPerPage}
-							totalsCount={this.state.data.length}
-							rowPerPage={pagers.rowsPerPage}
-						/>
-					) : (
-						''
-					)}
+					<div className='search-box-results-summary'>
+						{this.state.data.length} Online Programs for "{this.state.filter}"
+					</div>
 					<table className='table table-hover table-striped'>
 						<thead>
 							<tr>
@@ -146,6 +138,18 @@ export class Table extends Component<ITableProps, ITableState> {
 						</tbody>
 					</table>
 				</div>
+				{pagers.paging ? (
+					<Pagination
+						curr={pagers.curr}
+						totalPage={pagesCount}
+						setCurrentPage={this.setCurrentPage}
+						setRowsPerPage={this.setRowsPerPage}
+						totalsCount={this.state.data.length}
+						rowPerPage={pagers.rowsPerPage}
+					/>
+				) : (
+					''
+				)}
 			</div>
 		);
 	}

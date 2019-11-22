@@ -25,7 +25,7 @@ export class Pagination extends Component<
 	setCurrentPage(e) {
 		this.setPage(parseInt(e.target.value));
 	}
-	addPagge() {
+	addPage() {
 		if (this.state.currPage >= this.props.totalPage - 1) return;
 
 		this.setPage(this.state.currPage + 1);
@@ -42,8 +42,8 @@ export class Pagination extends Component<
 		});
 	}
 	setRowsPerPage(e) {
-		let i = typeof e.target.value === 'number' ? parseInt(e.target.value) : e.target.value;
-		if (i === 'All' || isNaN(i)) i = this.props.totalsCount;
+		let i = parseInt(e.target.value);
+		if (isNaN(i)) i = this.props.totalsCount;
 		this.props.setRowsPerPage(i);
 		this.setState({
 			rowPerPage: i,
@@ -83,7 +83,7 @@ export class Pagination extends Component<
 						className='btn btn-warning'
 						name=''
 						disabled={nextDisableStyle}
-						onClick={this.addPagge}
+						onClick={this.addPage}
 						value='Next'
 					/>
 					<label htmlFor='rowsPerPage' className='SortableTblLabel'>
