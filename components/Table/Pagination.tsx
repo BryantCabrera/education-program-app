@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ITablePaginationProps, ITablePaginationState } from '../../common/interfaces';
+import styled from 'styled-components';
 
 export class Pagination extends Component<ITablePaginationProps, ITablePaginationState> {
 	state = {
@@ -67,8 +68,13 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 		const prevDisableStyle = this.state.currPage + 1 <= 1;
 		const rowPerPage = this.props.totalPage === 1 ? 'All' : this.props.rowPerPage;
 
+		const Pagination = styled.div`
+			text-align: right;
+			font-size: 1em;
+		`;
+
 		return (
-			<div className='form-group'>
+			<Pagination className='form-group'>
 				<div className='pager col-sm-7 col-xs-12'>
 					<input
 						type='button'
@@ -116,10 +122,10 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 				</div>
 				<div className='desc col-sm-5 col-xs-12'>
 					<div>
-						Page {this.state.currPage + 1} of totals {this.props.totalPage}, totals {this.props.totalsCount} rows
+						Page {this.state.currPage + 1} of {this.props.totalPage} total pages, {this.props.totalsCount} rows of data
 					</div>
 				</div>
-			</div>
+			</Pagination>
 		);
 	};
 }

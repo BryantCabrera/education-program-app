@@ -112,6 +112,10 @@ export default class Table extends Component<ITableProps, ITableState> {
 			color: black;
 		`;
 
+		const ProgramSummary = styled.div`
+			font-size: 1.75em;
+		`;
+
 		return (
 			<div className='table-responsive'>
 				<div className='sortable-table'>
@@ -132,9 +136,9 @@ export default class Table extends Component<ITableProps, ITableState> {
 						)}
 						<Link href='#'>Sign In</Link>|<Link href='#'>More</Link>
 					</MainHeader>
-					<div className='search-box-results-summary'>
+					<ProgramSummary>
 						{this.state.data.length} Online Programs for "{this.state.filter}"
-					</div>
+					</ProgramSummary>
 					<table className='table table-hover table-striped'>
 						<thead>
 							<tr>
