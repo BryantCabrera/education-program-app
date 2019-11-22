@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ITableHeaderProps, ITableHeaderState } from '../../common/interfaces';
+import styled from 'styled-components';
 
 export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 	state = {
@@ -30,12 +31,15 @@ export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 	};
 
 	render = () => {
+		const TableHeader = styled.th`
+			text-align: left;
+		`;
 		return (
-			<th onClick={this.sort}>
+			<TableHeader onClick={this.sort}>
 				{' '}
 				{this.props.children} <br />
 				<i className={this.state.sortCssClass} aria-hidden='true' />
-			</th>
+			</TableHeader>
 		);
 	};
 }
