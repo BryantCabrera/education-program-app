@@ -37,7 +37,7 @@ module.exports = {
 		// 'filenames/match-regex': [1, '^(?!.*--)(?!^[0-9-])(?!.*(-|-\.spec)$)[a-z0-9-]+(\.spec)?$', true],
 		'max-depth': [1, 5],
 		'max-lines': [1, { max: 500, skipBlankLines: true }],
-		'max-len': [1, { code: 120, ignoreComments: true, ignoreUrls: true }],
+		'max-len': [1, { code: 200, ignoreComments: true, ignoreUrls: true }],
 		'no-const-assign': 1,
 		'no-var': 1,
 		'prefer-const': 1,

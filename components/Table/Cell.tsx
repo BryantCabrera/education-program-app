@@ -16,17 +16,13 @@ export const Cell = (props: ITableCellProps) => {
 						return item;
 					}, {}).custd;
 
-				if (!CustomTd) return <td key={id}>{props.tdData[item]}</td>;
+				if (!CustomTd) {
+					return <td key={id}>{props.tdData[item]}</td>;
+				}
 
 				if (CustomTdComponent) {
 					return (
-						<CustomTdComponent
-							key={id}
-							{...props}
-							tdData={props.tdData[item]}
-							field={item}
-							rowData={props.tdData}
-						/>
+						<CustomTdComponent key={id} {...props} tdData={props.tdData[item]} field={item} rowData={props.tdData} />
 					);
 				}
 

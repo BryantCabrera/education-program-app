@@ -20,12 +20,16 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 		this.setPage(parseInt(e.target.value));
 	}
 	addPage() {
-		if (this.state.currPage >= this.props.totalPage - 1) return;
+		if (this.state.currPage >= this.props.totalPage - 1) {
+			return;
+		}
 
 		this.setPage(this.state.currPage + 1);
 	}
 	subPage() {
-		if (this.state.currPage < 1) return;
+		if (this.state.currPage < 1) {
+			return;
+		}
 
 		this.setPage(this.state.currPage - 1);
 	}
@@ -37,16 +41,18 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 	}
 	setRowsPerPage(e) {
 		let i = parseInt(e.target.value);
-		if (isNaN(i)) i = this.props.totalsCount;
+		if (isNaN(i)) {
+			i = this.props.totalsCount;
+		}
 		this.props.setRowsPerPage(i);
 		this.setState({
 			rowPerPage: i,
 		});
 	}
 	render() {
-		let nextDisableStyle = this.state.currPage + 1 >= this.props.totalPage;
-		let prevDisableStyle = this.state.currPage + 1 <= 1;
-		let rowPerPage = this.props.totalPage === 1 ? 'All' : this.props.rowPerPage;
+		const nextDisableStyle = this.state.currPage + 1 >= this.props.totalPage;
+		const prevDisableStyle = this.state.currPage + 1 <= 1;
+		const rowPerPage = this.props.totalPage === 1 ? 'All' : this.props.rowPerPage;
 
 		return (
 			<div className='form-group'>

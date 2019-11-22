@@ -44,9 +44,15 @@ export default class Table extends Component<ITableProps, ITableState> {
 		const newAsc = this.state.asc;
 		const newData = this.state.data;
 		newData.sort((a, b) => {
-			if (a[dKey] === b[dKey]) return 0;
-			if (nAsc ? a[dKey] > b[dKey] : a[dKey] < b[dKey]) return 1;
-			if (nAsc ? a[dKey] < b[dKey] : a[dKey] > b[dKey]) return -1;
+			if (a[dKey] === b[dKey]) {
+				return 0;
+			}
+			if (nAsc ? a[dKey] > b[dKey] : a[dKey] < b[dKey]) {
+				return 1;
+			}
+			if (nAsc ? a[dKey] < b[dKey] : a[dKey] > b[dKey]) {
+				return -1;
+			}
 			return 0;
 		});
 		for (const prop in newAsc) {
@@ -68,7 +74,9 @@ export default class Table extends Component<ITableProps, ITableState> {
 		let nCurr = this.state.pagers.curr;
 		const pagesCount = Math.ceil(this.state.data.length / index);
 		//console.log(this.state.pagers.curr, pagesCount, index);
-		if (this.state.pagers.curr >= pagesCount) nCurr = pagesCount - 1;
+		if (this.state.pagers.curr >= pagesCount) {
+			nCurr = pagesCount - 1;
+		}
 		this.setState({
 			pagers: Object.assign({}, this.state.pagers, {
 				rowsPerPage: index,
