@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
-import Layout from '../components/Layout';
+// import { Layout } from '../components/Layout';
 import Table from '../components/Table/Table';
 
-import {
-	IIndexComponentProps,
-	IIndexComponentState,
-} from '../common/interfaces';
+import { IIndexComponentProps, IIndexComponentState } from '../common/interfaces';
 
-export default class App extends Component<
-	IIndexComponentProps,
-	IIndexComponentState
-> {
+export default class App extends Component<IIndexComponentProps, IIndexComponentState> {
 	static async getInitialProps() {
 		const response = await fetch('http://localhost:4000/programs');
 		const parsedResponse = await response.json();
@@ -19,21 +13,16 @@ export default class App extends Component<
 		return { programs: parsedResponse.data };
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.setState({
 			programs: this.props.programs,
 		});
 	}
 
 	render() {
-		const Headers = [
-			'school',
-			'programName',
-			'location',
-			'degreeType',
-			'delivery',
-			'annualTuition',
-		];
+		const displayHeaders = ['School', 'Program Name', 'Location', 'Degree Type', 'Delivery', 'Annual Tuition'];
+
+		const tableHeaders = ['school', 'programName', 'location', 'degreeType', 'delivery', 'annualTuition'];
 
 		return (
 			// <Layout>
@@ -44,8 +33,8 @@ export default class App extends Component<
 
 			<Table
 				tblData={this.state.programs}
-				tHead={Headers}
-				dKey={Headers}
+				tHead={displayHeaders}
+				dKey={tableHeaders}
 				customTd={[]}
 				paging={true}
 				search={true}

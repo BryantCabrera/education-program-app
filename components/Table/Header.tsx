@@ -6,7 +6,7 @@ export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 		sortCssClass: 'fa fa-sort',
 	};
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		//constructor is only invoked when the component is first created. if data change, need to update on componentWillReceiveProps
 		let a = 'fa fa-sort';
 		switch (nextProps.asc) {

@@ -18,7 +18,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 		},
 	};
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		//constructor is only invoked when the component is first created. if data change, need to update on componentWillReceiveProps
 		if (nextProps.tblData !== this.state.data) {
 			this.setState({ data: nextProps.tblData });
@@ -81,10 +81,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 		const pagers = this.state.pagers;
 		const pagesCount = Math.ceil(this.state.data.length / pagers.rowsPerPage);
 		if (pagers.paging) {
-			pageData = pageData.slice(
-				pagers.curr * pagers.rowsPerPage,
-				(pagers.curr + 1) * pagers.rowsPerPage
-			);
+			pageData = pageData.slice(pagers.curr * pagers.rowsPerPage, (pagers.curr + 1) * pagers.rowsPerPage);
 		}
 		return (
 			<div className='table-responsive'>
@@ -103,6 +100,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 							/>
 						</div>
 					)}
+					<div className='header-links'></div>
 					<div className='search-box-results-summary'>
 						{this.state.data.length} Online Programs for "{this.state.filter}"
 					</div>
@@ -111,12 +109,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 							<tr>
 								{this.props.dKey.map((item, id) => {
 									return (
-										<Header
-											key={id}
-											sortData={this.sortData}
-											asc={this.state.asc[item]}
-											dataKey={item}
-										>
+										<Header key={id} sortData={this.sortData} asc={this.state.asc[item]} dataKey={item}>
 											{this.props.tHead[parseInt(id)]}
 										</Header>
 									);
@@ -126,13 +119,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 						<tbody>
 							{pageData.map((item, id) => {
 								return (
-									<Cell
-										key={id}
-										tdData={item}
-										{...this.props}
-										dKey={this.props.dKey}
-										customTd={this.props.customTd}
-									/>
+									<Cell key={id} tdData={item} {...this.props} dKey={this.props.dKey} customTd={this.props.customTd} />
 								);
 							})}
 						</tbody>

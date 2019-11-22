@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import {
-	ITablePaginationProps,
-	ITablePaginationState,
-} from '../../common/interfaces';
+import { ITablePaginationProps, ITablePaginationState } from '../../common/interfaces';
 
-export class Pagination extends Component<
-	ITablePaginationProps,
-	ITablePaginationState
-> {
+export class Pagination extends Component<ITablePaginationProps, ITablePaginationState> {
 	state = {
 		currPage: this.props.curr,
 		rowPerPage: this.props.rowPerPage,
 	};
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		//constructor is only invoked when the component is first created. if data change, need to update on componentWillReceiveProps
 		if (nextProps.curr !== this.state.currPage) {
 			this.setState({ currPage: nextProps.curr });
@@ -65,11 +59,7 @@ export class Pagination extends Component<
 						onClick={this.subPage}
 						value='Prev'
 					/>
-					<select
-						onChange={this.setCurrentPage}
-						value={this.state.currPage}
-						className='form-control page-select'
-					>
+					<select onChange={this.setCurrentPage} value={this.state.currPage} className='form-control page-select'>
 						{Array.from(new Array(this.props.totalPage), (x, i) => {
 							return (
 								<option key={i} value={i}>
@@ -107,8 +97,7 @@ export class Pagination extends Component<
 				</div>
 				<div className='desc col-sm-5 col-xs-12'>
 					<div>
-						Page {this.state.currPage + 1} of totals {this.props.totalPage},
-						totals {this.props.totalsCount} rows
+						Page {this.state.currPage + 1} of totals {this.props.totalPage}, totals {this.props.totalsCount} rows
 					</div>
 				</div>
 			</div>

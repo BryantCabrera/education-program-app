@@ -1,14 +1,15 @@
+import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
-export default ({ children, title = 'Education Programs' }) => (
+export const Layout = ({ children, title = 'Education Programs' }) => (
 	<div>
 		<Head>
 			<title>{title}</title>
-			<meta charSet="utf-8" />
-			<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			<meta charSet='utf-8' />
+			<meta name='viewport' content='initial-scale=1.0, width=device-width' />
 		</Head>
-		<div className="app">
+		<div className='app'>
 			<header>
 				<h1>
 					<Link href={{ pathname: '/' }}>Home</Link>
