@@ -3,6 +3,7 @@ import { Pagination } from './Pagination';
 import { Header } from './Header';
 import { Cell } from './Cell';
 import { ITableProps, ITableState } from '../../common/interfaces';
+import styled from 'styled-components';
 
 export default class Table extends Component<ITableProps, ITableState> {
 	state = {
@@ -95,24 +96,42 @@ export default class Table extends Component<ITableProps, ITableState> {
 		if (pagers.paging) {
 			pageData = pageData.slice(pagers.curr * pagers.rowsPerPage, (pagers.curr + 1) * pagers.rowsPerPage);
 		}
+
+		const MainHeader = styled.div`
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			font-size: 1.5em;
+			color: orange;
+		`;
+
+		const Link = styled.a`
+			font-size: 1em;
+			font-weight: bold;
+			text-decoration: none;
+			color: black;
+		`;
+
 		return (
 			<div className='table-responsive'>
 				<div className='sortable-table'>
-					<div className='table-title'>Affordable Online Degrees</div>
-					{this.props.search && (
-						<div className='search-box'>
-							Search:{' '}
-							<input
-								className='search'
-								type='text'
-								name=''
-								value={this.state.filter}
-								placeholder='Filter Result'
-								onChange={this.filter}
-							/>
-						</div>
-					)}
-					<div className='header-links'></div>
+					<MainHeader>
+						<div className='table-title'>Affordable Online Degrees</div>
+						{this.props.search && (
+							<div className='search-box'>
+								Search:{' '}
+								<input
+									className='search'
+									type='text'
+									name=''
+									value={this.state.filter}
+									placeholder='Filter Result'
+									onChange={this.filter}
+								/>
+							</div>
+						)}
+						<Link href='#'>Sign In</Link>|<Link href='#'>More</Link>
+					</MainHeader>
 					<div className='search-box-results-summary'>
 						{this.state.data.length} Online Programs for "{this.state.filter}"
 					</div>
