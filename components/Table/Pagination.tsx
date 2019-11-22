@@ -7,7 +7,7 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 		rowPerPage: this.props.rowPerPage,
 	};
 
-	UNSAFE_componentWillReceiveProps(nextProps) {
+	getDerivedStateFromProps(nextProps) {
 		//constructor is only invoked when the component is first created. if data change, need to update on componentWillReceiveProps
 		if (nextProps.curr !== this.state.currPage) {
 			this.setState({ currPage: nextProps.curr });
@@ -16,9 +16,11 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 			this.setState({ rowPerPage: nextProps.rowPerPage });
 		}
 	}
+
 	setCurrentPage(e) {
 		this.setPage(parseInt(e.target.value));
 	}
+
 	addPage() {
 		if (this.state.currPage >= this.props.totalPage - 1) {
 			return;
@@ -26,6 +28,7 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 
 		this.setPage(this.state.currPage + 1);
 	}
+
 	subPage() {
 		if (this.state.currPage < 1) {
 			return;
@@ -33,12 +36,14 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 
 		this.setPage(this.state.currPage - 1);
 	}
+
 	setPage(i) {
 		this.props.setCurrentPage(i);
 		this.setState({
 			currPage: i,
 		});
 	}
+
 	setRowsPerPage(e) {
 		let i = parseInt(e.target.value);
 		if (isNaN(i)) {
@@ -49,6 +54,7 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 			rowPerPage: i,
 		});
 	}
+
 	render() {
 		const nextDisableStyle = this.state.currPage + 1 >= this.props.totalPage;
 		const prevDisableStyle = this.state.currPage + 1 <= 1;

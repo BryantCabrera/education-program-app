@@ -24,6 +24,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 			this.setState({ data: nextProps.tblData });
 		}
 	}
+
 	componentDidUpdate(prevProps, prevState) {}
 	filter(e) {
 		const newData = this.props.tblData.filter(item => {
@@ -40,6 +41,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 			data: newData,
 		});
 	}
+
 	sortData(dKey, nAsc) {
 		const newAsc = this.state.asc;
 		const newData = this.state.data;
@@ -63,12 +65,14 @@ export default class Table extends Component<ITableProps, ITableState> {
 			data: newData,
 		});
 	}
+
 	setCurrentPage(i) {
 		const index = parseInt(i);
 		this.setState({
 			pagers: Object.assign({}, this.state.pagers, { curr: index }),
 		});
 	}
+
 	setRowsPerPage(i) {
 		const index = parseInt(i);
 		let nCurr = this.state.pagers.curr;
@@ -84,6 +88,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 			}),
 		});
 	}
+
 	render() {
 		let pageData = this.state.data;
 		const pagers = this.state.pagers;

@@ -13,12 +13,6 @@ export default class App extends Component<IIndexComponentProps, IIndexComponent
 		return { programs: parsedResponse.data };
 	}
 
-	UNSAFE_componentWillMount() {
-		this.setState({
-			programs: this.props.programs,
-		});
-	}
-
 	render() {
 		const displayHeaders = ['School', 'Program Name', 'Location', 'Degree Type', 'Delivery', 'Annual Tuition'];
 
@@ -32,7 +26,7 @@ export default class App extends Component<IIndexComponentProps, IIndexComponent
 			// </Layout>
 
 			<Table
-				tblData={this.state.programs}
+				tblData={this.props.programs}
 				tHead={displayHeaders}
 				dKey={tableHeaders}
 				customTd={[]}

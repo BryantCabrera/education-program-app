@@ -6,8 +6,7 @@ export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 		sortCssClass: 'fa fa-sort',
 	};
 
-	UNSAFE_componentWillReceiveProps(nextProps) {
-		//constructor is only invoked when the component is first created. if data change, need to update on componentWillReceiveProps
+	getDerivedStateFromProps(nextProps) {
 		let a = 'fa fa-sort';
 		switch (nextProps.asc) {
 			case null:
@@ -20,14 +19,16 @@ export class Header extends Component<ITableHeaderProps, ITableHeaderState> {
 				a = 'fa fa-sort-amount-desc';
 				break;
 		}
-		//console.log(a);
+
 		if (nextProps.asc !== this.props.asc) {
 			this.setState({ sortCssClass: a });
 		}
 	}
+
 	sort() {
 		this.props.sortData(this.props.dataKey, !this.props.asc);
 	}
+
 	render() {
 		return (
 			<th onClick={this.sort}>
