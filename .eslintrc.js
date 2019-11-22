@@ -14,8 +14,8 @@ module.exports = {
 		// Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
 		// e.g. '@typescript-eslint/explicit-function-return-type': 'off',
 		// 0 is 'off', 1 is 'warning', 2 is 'error'
-		camelcase: 'off',
-		curly: 1,
+		'camelcase': 'off',
+		'curly': 1,
 		'max-depth': [1, 5],
 		'max-lines': [1, { max: 500, skipBlankLines: true }],
 		'no-const-assign': 1,
