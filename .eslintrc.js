@@ -16,11 +16,6 @@ module.exports = {
 		// 0 is 'off', 1 is 'warning', 2 is 'error'
 		camelcase: 'off',
 		curly: 1,
-		'filenames/match-regex': [
-			1,
-			'^(?!.*--)(?!^[0-9-])(?!.*(-|-.spec)$)[a-z0-9-]+(.spec)?$',
-			true
-		],
 		'max-depth': [1, 5],
 		'max-lines': [1, { max: 500, skipBlankLines: true }],
 		'no-const-assign': 1,

@@ -19,12 +19,25 @@ export default class App extends Component<IIndexComponentProps, IIndexComponent
 	}
 
 	render() {
+		const Headers = ['school', 'programName', 'location', 'degreeType', 'delivery', 'annualTuition'];
+
 		return (
 			<Layout>
 				{
 					this.state.programs.map((program, index) => <p key={index}>{program.programName}</p>)
 				}
+				
 			</Layout>
+			// <TablePagination
+			// 	title="TablePagination"
+			// 	subTitle="Sub Title"
+			// 	headers={Headers}
+			// 	data={this.state.programs}
+			// 	columns="school.programName.location.degreeType.delivery.annualTuition"
+			// 	perPageItemCount={5}
+			// 	totalCount={this.state.programs.length}
+			// 	arrayOption={[["size", 'all', ' ']]}
+			// />
 		)
 	}
 };
