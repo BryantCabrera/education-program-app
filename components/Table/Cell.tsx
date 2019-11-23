@@ -60,7 +60,7 @@ export const Cell = (props: ITableCellProps) => {
 				if (item === 'school') {
 					return (
 						<td key={id}>
-							<img src={schoolImageMap[item.replace(/\s/gi, '')]} />
+							<SchoolImage src={schoolImageMap[props.tdData['school'].replace(/\s/gi, '')]} />
 						</td>
 					);
 				}
