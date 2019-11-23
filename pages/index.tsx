@@ -19,12 +19,6 @@ export default class App extends Component<IIndexComponentProps, IIndexComponent
 		const tableHeaders = ['school', 'programName', 'degreeType', 'delivery', 'annualTuition'];
 
 		return (
-			// <Layout>
-			// 	{this.state.programs.map((program, index) => (
-			// 		<p key={index}>{program.programName}</p>
-			// 	))}
-			// </Layout>
-
 			<Table
 				tblData={this.props.programs}
 				tHead={displayHeaders}
@@ -35,16 +29,6 @@ export default class App extends Component<IIndexComponentProps, IIndexComponent
 				defaultCSS={true}
 				defaultRowsPerPage={5}
 			/>
-			// <TablePagination
-			// 	title="TablePagination"
-			// 	subTitle="Sub Title"
-			// 	headers={Headers}
-			// 	data={this.state.programs}
-			// 	columns="school.programName.location.degreeType.delivery.annualTuition"
-			// 	perPageItemCount={5}
-			// 	totalCount={this.state.programs.length}
-			// 	arrayOption={[["size", 'all', ' ']]}
-			// />
 		);
 	};
 }
