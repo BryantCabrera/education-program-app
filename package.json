@@ -1,61 +1,63 @@
 {
-  "name": "education-program-app",
-  "version": "1.0.0",
-  "description": "Bryant Cabrera's Education Program App",
-  "main": "index.js",
-  "scripts": {
-    "start": "next",
-    "test": "npm run build && echo \"Placeholder For Running Test Suite\" && exit 0",
-    "lint": "eslint \"{,!(node_modules|dist)/**/}*.{j,t}s\"",
-    "lint:fix": "npm run lint -- --fix",
-    "build": "tsc -p .",
-    "postinstall": "tsc -p .",
-    "compile": "tsc && node server.js",
-    "dev:server": "nodemon -e ts --exec \"npm run compile\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BryantCabrera/education-program-app.git"
-  },
-  "author": "Bryant Cabrera",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BryantCabrera/education-program-app/issues"
-  },
-  "homepage": "https://github.com/BryantCabrera/education-program-app#readme",
-  "lint-staged": {
-    "*.{j,t}s": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:fix && npm test"
-    }
-  },
-  "dependencies": {
-    "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.1.3",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "styled-components": "^4.4.1"
-  },
-  "devDependencies": {
-    "@types/node": "^12.12.8",
-    "@types/react": "^16.9.11",
-    "@typescript-eslint/eslint-plugin": "^2.8.0",
-    "@typescript-eslint/parser": "^2.8.0",
-    "eslint": "^6.6.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-filenames": "^1.3.2",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.16.0",
-    "husky": "^3.1.0",
-    "lint-staged": "^9.4.3",
-    "nodemon": "^1.19.4",
-    "prettier": "^1.19.1",
-    "ts-node": "^8.5.2",
-    "typescript": "^3.7.2"
-  }
+	"name": "education-program-app",
+	"version": "1.0.0",
+	"description": "Bryant Cabrera's Education Program App",
+	"main": "index.js",
+	"scripts": {
+		"start": "next start -p $PORT",
+		"test": "npm run build && echo \"Placeholder For Running Test Suite\" && exit 0",
+		"lint": "eslint \"{,!(node_modules|dist)/**/}*.{j,t}s\"",
+		"lint:fix": "npm run lint -- --fix",
+		"build": "tsc -p . && next build",
+		"postinstall": "tsc -p .",
+		"compile": "tsc && node server.js",
+		"dev:server": "nodemon -e ts --exec \"npm run compile\"",
+		"dev": "next",
+		"heroku-postbuild": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/BryantCabrera/education-program-app.git"
+	},
+	"author": "Bryant Cabrera",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/BryantCabrera/education-program-app/issues"
+	},
+	"homepage": "https://github.com/BryantCabrera/education-program-app#readme",
+	"lint-staged": {
+		"*.{j,t}s": [
+			"eslint --fix",
+			"git add"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run lint:fix && npm test"
+		}
+	},
+	"dependencies": {
+		"isomorphic-unfetch": "^3.0.0",
+		"next": "^9.1.3",
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0",
+		"styled-components": "^4.4.1"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.8",
+		"@types/react": "^16.9.11",
+		"@typescript-eslint/eslint-plugin": "^2.8.0",
+		"@typescript-eslint/parser": "^2.8.0",
+		"eslint": "^6.6.0",
+		"eslint-config-prettier": "^6.7.0",
+		"eslint-plugin-filenames": "^1.3.2",
+		"eslint-plugin-prettier": "^3.1.1",
+		"eslint-plugin-react": "^7.16.0",
+		"husky": "^3.1.0",
+		"lint-staged": "^9.4.3",
+		"nodemon": "^1.19.4",
+		"prettier": "^1.19.1",
+		"ts-node": "^8.5.2",
+		"typescript": "^3.7.2"
+	}
 }
