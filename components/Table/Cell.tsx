@@ -34,6 +34,11 @@ export const Cell = (props: ITableCellProps) => {
 		height: 4em;
 		width: 4em;
 	`;
+	const SubHeader = styled.h4`
+		margin: 0;
+		padding: 0;
+		font-weight: bold;
+	`;
 
 	return (
 		<tr>
@@ -47,6 +52,14 @@ export const Cell = (props: ITableCellProps) => {
 						return item;
 					}, {}).custd;
 
+				if (item === 'school') {
+					return (
+						<td key={id}>
+							<SchoolImage src={schoolImageMap[props.tdData['school'].replace(/\s/gi, '')]} />
+						</td>
+					);
+				}
+
 				if (item === 'programName') {
 					return (
 						<td key={id}>
@@ -57,10 +70,11 @@ export const Cell = (props: ITableCellProps) => {
 					);
 				}
 
-				if (item === 'school') {
+				if (item === 'degreeType') {
 					return (
 						<td key={id}>
-							<SchoolImage src={schoolImageMap[props.tdData['school'].replace(/\s/gi, '')]} />
+							<SubHeader>Degree Type:</SubHeader>
+							{props.tdData[item]}
 						</td>
 					);
 				}
