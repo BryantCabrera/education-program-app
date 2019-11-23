@@ -14,9 +14,9 @@ export default class App extends Component<IIndexComponentProps, IIndexComponent
 	}
 
 	render = () => {
-		const displayHeaders = ['School', 'Program Name', 'Location', 'Degree Type', 'Delivery', 'Annual Tuition'];
+		const displayHeaders = ['School', 'Program Name', 'Degree Type', 'Delivery', 'Annual Tuition'];
 
-		const tableHeaders = ['school', 'programName', 'location', 'degreeType', 'delivery', 'annualTuition'];
+		const tableHeaders = ['school', 'programName', 'degreeType', 'delivery', 'annualTuition'];
 
 		return (
 			// <Layout>
