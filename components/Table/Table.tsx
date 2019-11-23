@@ -20,7 +20,6 @@ export default class Table extends Component<ITableProps, ITableState> {
 	};
 
 	getDerivedStateFromProps = (nextProps: ITableProps) => {
-		//constructor is only invoked when the component is first created. if data change, need to update on componentWillReceiveProps
 		if (nextProps.tblData !== this.state.data) {
 			this.setState({ data: nextProps.tblData });
 		}
@@ -176,14 +175,3 @@ export default class Table extends Component<ITableProps, ITableState> {
 		);
 	};
 }
-
-// Table.defaultProps = {
-// 	tblData: [],
-// 	tHead: [],
-// 	dKey: [],
-// 	customTd: [],
-// 	paging: true,
-// 	search: true,
-// 	defaultCSS: true,
-// 	defaultRowsPerPage: 5,
-// };

@@ -9,7 +9,6 @@ export class Pagination extends Component<ITablePaginationProps, ITablePaginatio
 	};
 
 	getDerivedStateFromProps = (nextProps: ITablePaginationProps) => {
-		//constructor is only invoked when the component is first created. if data change, need to update on componentWillReceiveProps
 		if (nextProps.curr !== this.state.currPage) {
 			this.setState({ currPage: nextProps.curr });
 		}
