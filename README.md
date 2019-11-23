@@ -225,7 +225,7 @@ This service can deployed using docker. A Dockerfile is included which can be us
 
 </details>
 
-## Running Your Docker Image Locally
+## OPTIONAL: Running Your Docker Image Locally
 
 1. `$docker run -p 8080:8080 <registry>/<repo_name>:<tag>`.
 1. `$docker ps` shows what's running
