@@ -96,23 +96,39 @@ export default class Table extends Component<ITableProps, ITableState> {
 			pageData = pageData.slice(pagers.curr * pagers.rowsPerPage, (pagers.curr + 1) * pagers.rowsPerPage);
 		}
 
+		const Main = styled.div`
+			display: flex;
+			flex-direction: column;
+			place-items: center;
+			padding: 1em 10em;
+		`;
 		const MainHeader = styled.div`
 			display: flex;
 			justify-content: space-evenly;
 			align-items: center;
+			padding: 0 2em 1em 2em;
+			border-bottom: 5px solid orange;
 			font-size: 1.5em;
 			color: orange;
 		`;
-
 		const Link = styled.a`
 			font-size: 1em;
 			font-weight: bold;
 			text-decoration: none;
 			color: black;
 		`;
-
 		const ProgramSummary = styled.div`
+			width: 100%;
+			text-align: left;
 			font-size: 1.75em;
+		`;
+		const Table = styled.table`
+			width: 100%;
+		`;
+		const HR = styled.hr`
+			height: 2px;
+			width: 100%;
+			color: gray;
 		`;
 
 		return (
@@ -135,29 +151,31 @@ export default class Table extends Component<ITableProps, ITableState> {
 						)}
 						<Link href='#'>Sign In</Link>|<Link href='#'>More</Link>
 					</MainHeader>
-					<ProgramSummary>
-						{this.state.data.length} Online Programs for "{this.state.filter}"
-					</ProgramSummary>
-					<table className='table table-hover table-striped'>
-						<thead>
-							<tr>
-								{this.props.dKey.map((item, id) => {
+					<Main>
+						<ProgramSummary>
+							{this.state.data.length} Online Programs for "{this.state.filter}"
+						</ProgramSummary>
+						<Table className='table table-hover table-striped'>
+							<thead>
+								<tr>
+									{this.props.dKey.map((item, id) => {
+										return (
+											<Header key={id} sortData={this.sortData} asc={this.state.asc[item]} dataKey={item}>
+												{this.props.tHead[parseInt(id)]}
+											</Header>
+										);
+									})}
+								</tr>
+							</thead>
+							<tbody>
+								{pageData.map((item, id) => {
 									return (
-										<Header key={id} sortData={this.sortData} asc={this.state.asc[item]} dataKey={item}>
-											{this.props.tHead[parseInt(id)]}
-										</Header>
+										<Row key={id} tdData={item} {...this.props} dKey={this.props.dKey} customTd={this.props.customTd} />
 									);
 								})}
-							</tr>
-						</thead>
-						<tbody>
-							{pageData.map((item, id) => {
-								return (
-									<Row key={id} tdData={item} {...this.props} dKey={this.props.dKey} customTd={this.props.customTd} />
-								);
-							})}
-						</tbody>
-					</table>
+							</tbody>
+						</Table>
+					</Main>
 				</div>
 				{pagers.paging ? (
 					<Pagination

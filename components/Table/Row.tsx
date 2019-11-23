@@ -22,7 +22,7 @@ export const Row = (props: ITableRowProps) => {
 
 	// const TR = styled.tr`
 	// 	margin-bottom: 1em;
-	// 	border-bottom: 2px solid black;
+	// 	border-bottom: 10px solid gray;
 	// `;
 	const ProgramName = styled.span`
 		font-size: 1.5em;
