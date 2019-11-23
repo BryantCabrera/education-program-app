@@ -34,6 +34,9 @@ export const Cell = (props: ITableCellProps) => {
 		height: 4em;
 		width: 4em;
 	`;
+	const MutedTd = styled.td`
+		color: gray;
+	`;
 	const SubHeader = styled.h4`
 		margin: 0;
 		padding: 0;
@@ -72,19 +75,28 @@ export const Cell = (props: ITableCellProps) => {
 
 				if (item === 'degreeType') {
 					return (
-						<td key={id}>
+						<MutedTd key={id}>
 							<SubHeader>Degree Type:</SubHeader>
 							{props.tdData[item]}
-						</td>
+						</MutedTd>
 					);
 				}
 
 				if (item === 'delivery') {
 					return (
-						<td key={id}>
+						<MutedTd key={id}>
 							<SubHeader>Delivery</SubHeader>
 							{props.tdData[item]}
-						</td>
+						</MutedTd>
+					);
+				}
+
+				if (item === 'annualTuition') {
+					return (
+						<MutedTd key={id}>
+							<SubHeader>Annual Tuition</SubHeader>
+							{props.tdData[item]}
+						</MutedTd>
 					);
 				}
 
