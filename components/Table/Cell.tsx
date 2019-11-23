@@ -79,6 +79,15 @@ export const Cell = (props: ITableCellProps) => {
 					);
 				}
 
+				if (item === 'delivery') {
+					return (
+						<td key={id}>
+							<SubHeader>Delivery</SubHeader>
+							{props.tdData[item]}
+						</td>
+					);
+				}
+
 				if (!CustomTd) {
 					return <td key={id}>{props.tdData[item]}</td>;
 				}
