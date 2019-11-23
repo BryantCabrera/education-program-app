@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
-// import { Layout } from '../components/Layout';
 import Table from '../components/Table/Table';
 
 import { IIndexComponentProps, IIndexComponentState } from '../common/interfaces';
 
 export default class App extends Component<IIndexComponentProps, IIndexComponentState> {
 	static async getInitialProps() {
-		const response = await fetch('http://localhost:4000/programs');
+		const response = await fetch('https://education-program-api.herokuapp.com/programs');
 		const parsedResponse = await response.json();
 		console.log(parsedResponse.data, 'res.data');
 		return { programs: parsedResponse.data };
