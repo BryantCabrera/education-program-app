@@ -1,8 +1,8 @@
 import React from 'react';
-import { ITableCellProps } from '../../common/interfaces';
+import { ITableRowProps } from '../../common/interfaces';
 import styled from 'styled-components';
 
-export const Cell = (props: ITableCellProps) => {
+export const Row = (props: ITableRowProps) => {
 	const CustomTd = props.customTd;
 
 	const schoolImageMap = {

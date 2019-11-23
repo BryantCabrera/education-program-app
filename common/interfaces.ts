@@ -26,7 +26,7 @@ export interface ITableHeaderState {
 	sortCssClass: string;
 }
 
-export interface ITableCellProps {
+export interface ITableRowProps {
 	tdData: object[];
 	dKey: any;
 	customTd: any;

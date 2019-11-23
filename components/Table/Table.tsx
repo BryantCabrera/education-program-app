@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Pagination } from './Pagination';
 import { Header } from './Header';
-import { Cell } from './Cell';
+import { Row } from './Row';
 import { ITableProps, ITableState } from '../../common/interfaces';
 import styled from 'styled-components';
 
@@ -153,7 +153,7 @@ export default class Table extends Component<ITableProps, ITableState> {
 						<tbody>
 							{pageData.map((item, id) => {
 								return (
-									<Cell key={id} tdData={item} {...this.props} dKey={this.props.dKey} customTd={this.props.customTd} />
+									<Row key={id} tdData={item} {...this.props} dKey={this.props.dKey} customTd={this.props.customTd} />
 								);
 							})}
 						</tbody>
