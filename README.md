@@ -209,7 +209,7 @@ Current Method: CI (Continuous Integration) by linking Heroku to GitHub repo & b
 
 </details>
 
-## OPTIONAL: Create Your Docker Image for Local Testing
+## OPTIONAL: Create Your Docker Image for Local Testing (Docker not used for this project)
 
 This service can deployed using docker. A Dockerfile is included which can be used to build it into a production grade docker image.
 
@@ -225,7 +225,7 @@ This service can deployed using docker. A Dockerfile is included which can be us
 
 </details>
 
-## OPTIONAL: Running Your Docker Image Locally
+## OPTIONAL: Running Your Docker Image Locally (Docker not used for this project)
 
 1. `$docker run -p 8080:8080 <registry>/<repo_name>:<tag>`.
 1. `$docker ps` shows what's running
